@@ -4,7 +4,7 @@ class Api::V1::ImagesController < ApplicationController
   end
 
   def create
-    image = Image.create(Image_params)
+    image = Image.create(image_params)
     render json: image
   end
 
@@ -14,13 +14,13 @@ class Api::V1::ImagesController < ApplicationController
 
   def update
     image = Image.find(params[:id])
-    image.update_attributes(Image_params)
+    image.update_attributes(image_params)
     render json: image
   end
 
   private
 
-  def Image_params
+  def image_params
     params.require(:image).permit(:id, :url)
   end
 end
